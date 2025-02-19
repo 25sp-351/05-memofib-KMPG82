@@ -53,6 +53,5 @@ int main() {
 
     printf("%lu\n", (*fibonacci_provider)(40));
 
-    
     return 0;
 }
