@@ -27,6 +27,7 @@ long cache_func(int of_num) {
     if (_memoization_data[of_num] == NO_VALUE_YET) {
         _memoization_data[of_num] = (*_original_provider)(of_num);
     }
+    
     return _memoization_data[of_num];
 }
 
@@ -36,6 +37,7 @@ long_func_ptr init_cache(long_func_ptr real_provider) {
         _memoization_data[ix] = NO_VALUE_YET;
 
     _original_provider = real_provider;
+    
     return cache_func;
 }
 
