@@ -1,0 +1,8 @@
+.history
+.jj
+.env
+.o
+.exe
+.ob
+node_modules/
+.env
