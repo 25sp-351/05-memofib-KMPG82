@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX_MEMOIZED 100
+#define MAX_MEMOIZED 1000
 #define ARRAY_SIZE (MAX_MEMOIZED + 1)
 #define NO_VALUE_YET -1
 
@@ -53,7 +53,12 @@ int main() {
 
     printf("%lu\n", (*fibonacci_provider)(20));
 
-    printf("%lu\n", (*fibonacci_provider)(40));
+    printf("%lu\n", (*fibonacci_provider)(1000));
+
+    printf("%lu\n", (*fibonacci_provider)(1000));
+
+    printf("%lu\n", (*fibonacci_provider)(1001));
+
 
     return 0;
 }
