@@ -53,12 +53,13 @@ int main() {
 
     printf("%lu\n", (*fibonacci_provider)(20));
 
-    printf("%lu\n", (*fibonacci_provider)(1000));
+    printf("%lu\n", (*fibonacci_provider)(40));
 
-    printf("%lu\n", (*fibonacci_provider)(1000));
+    printf("%lu\n", (*fibonacci_provider)(60));
 
-    printf("%lu\n", (*fibonacci_provider)(1001));
+    printf("%lu\n", (*fibonacci_provider)(70));
 
+    printf("%lu\n", (*fibonacci_provider)(90));
 
     return 0;
 }
