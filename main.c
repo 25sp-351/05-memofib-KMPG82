@@ -4,15 +4,15 @@
 #define ARRAY_SIZE (MAX_MEMOIZED + 1)
 #define NO_VALUE_YET -1
 
-typedef long (*long_func_ptr)(int param);
+typedef long (*long_func_ptr)(int number);
 
-long fibonacci(int of_num);
-long cache_func(int of_num);
+long fibonacci(int number);
+long cache_func(int number);
 long_func_ptr init_cache(long_func_ptr real_provider);
 
 long_func_ptr fibonacci_provider;
-long_func_ptr _original_provider;
-long _memoization_data[ARRAY_SIZE];
+long_func_ptr original_provider;
+long memoization_data[ARRAY_SIZE];
 
 int main() {
     fibonacci_provider = init_cache(fibonacci);
@@ -37,32 +37,32 @@ int main() {
     return 0;
 }
 
-/* calculates fibonacci for a number */
-long fibonacci(int of_num) {
-    if (of_num <= 1)
-        return of_num;
+/* calculates nth number of fibonacci sequence */
+long fibonacci(int number) {
+    if (number <= 1)
+        return number;
 
-    return (*fibonacci_provider)(of_num - 1) +
-           (*fibonacci_provider)(of_num - 2);
+    return (*fibonacci_provider)(number - 1) +
+           (*fibonacci_provider)(number - 2);
 }
 
 /* checks cache if the value has been stored */
-long cache_func(int of_num) {
-    if (of_num > MAX_MEMOIZED)
-        return (*_original_provider)(of_num);
+long cache_func(int number) {
+    if (number > MAX_MEMOIZED)
+        return (*original_provider)(number);
 
-    if (_memoization_data[of_num] == NO_VALUE_YET)
-        _memoization_data[of_num] = (*_original_provider)(of_num);
+    if (memoization_data[number] == NO_VALUE_YET)
+        memoization_data[number] = (*original_provider)(number);
 
-    return _memoization_data[of_num];
+    return memoization_data[number];
 }
 
 /* initializes cache */
 long_func_ptr init_cache(long_func_ptr real_provider) {
     for (int ix = 0; ix < ARRAY_SIZE; ix++)
-        _memoization_data[ix] = NO_VALUE_YET;
+        memoization_data[ix] = NO_VALUE_YET;
 
-    _original_provider = real_provider;
+    original_provider = real_provider;
 
     return cache_func;
 }
